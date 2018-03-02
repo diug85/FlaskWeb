@@ -1,0 +1,8 @@
+Flask
+Flask-Session
+passlib
+SQLAlchemy
+matplotlib
+plotly
+numpy
+pandas

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quotes
+{% endblock %}
+
+{% block main %}
+    <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+        <h1>Quotes to search</h1>
+        <p style="color:blue">To quote multiple symbols separate them with commas:</p>
+        <form action="{{url_for('quoted')}}" method="post">
+            Symbol(s): <input type="text" name="symbols" value=""/>
+            <br/>
+            <br/>
+            <input type="submit" value="Search"/>
+        </form>
+    </div>
+{% endblock %}

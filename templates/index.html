@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <div class="col-sm-10 col-sm-offset-1">
+        <h1>Portfolio</h1>
+        <br/>
+         <table class="table table-striped" align="center">
+            <col width="100">
+            <col width="300">
+            <col width="120">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+            <thead>
+                <tr>
+                    <th>SYMBOL</th>
+                    <th>NAME</th>
+                    <th>SHARES</th>
+                    <th>BOOK PRICE</th>
+                    <th>MKT PRICE</th>
+                    <th>BOOK VALUE</th>
+                    <th>MKT VALUE</th>
+                    <th>P&amp;L</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="5"></td>
+                    <td><b>{{ footer[1] }}</b></td>
+                    <td><b>{{ footer[2] }}</b></td>
+                    <td><b>{{ footer[3] }}</b></td>
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for stock in portfolio %}
+                    <tr>
+                        <td>{{ stock["symbol"] }}</td>
+                        <td>{{ stock["name"] }}</td>
+                        <td>{{ stock["shares"] }}</td>
+                        <td>{{ stock["bp"] }}</td>
+                        <td>{{ stock["mp"] }}</td>
+                        <td>{{ stock["bv"] }}</td>
+                        <td>{{ stock["mv"] }}</td>
+                        <td>{{ stock["pnl"] }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="5" style="color:blue">CASH</td>
+                    <td style="color:blue">{{ footer[0] }}</td>
+                    <td colspan="2" style="color:blue">{{ footer[0] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

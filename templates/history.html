@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <div class="col-sm-10 col-sm-offset-1">
+        <h1>History</h1>
+        <br/>
+        <form action="{{url_for('history')}}" method="post">
+            <table class="table-striped" align="center">
+                <col width="100">
+                <col width="300">
+                <col width="100">
+                <col width="100">
+                <col width="100">
+                <col width="200">
+                <thead>
+                    <tr>
+                        <th>SYMBOL</th>
+                        <th>NAME</th>
+                        <th>OPERATION</th>
+                        <th>SHARES</th>
+                        <th>BOOK PRICE</th>
+                        <th>DATE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in hist %}
+                        {% if transaction["op"]=='Sell' %}
+                            <tr style="color:red">
+                        {% else %}
+                            {% if transaction["op"]=='Cash' %}
+                                <tr style="color:blue">
+                            {% else %}
+                            <tr>
+                            {% endif %}
+                        {% endif %}
+                                <td>{{ transaction["symbol"] }}</td>
+                                <td>{{ transaction["name"] }}</td>
+                                <td>{{ transaction["op"] }}</td>
+                                <td>{{ transaction["shares"] }}</td>
+                                <td>{{ transaction["bp"] }}</td>
+                                <td>{{ transaction["date"] }}</td>
+                            </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
+{% endblock %}

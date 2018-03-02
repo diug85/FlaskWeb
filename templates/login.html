@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('login') }}" method="post">
+         <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-user"></span>
+                    <input class="form-control" autocomplete="yes" autofocus class="form-control" name="username" placeholder="Username" type="text" value="a"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-lock"></span>
+                    <input class="form-control" name="password" placeholder="Password" type="password" value='1'/>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit" width="150">Log In</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

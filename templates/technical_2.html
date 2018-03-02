@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Technical Analysis
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <h2>{{ symbol }}</h2>
+    </div>
+
+    <div class='container'>
+        <div class='row'>
+            <div class='col-xs-12'>
+                <!-- TABS -->
+                <div class='nav navbar-inverse navbar-static' role='navigation' id='navbar-spy'>
+                    <ul class='nav navbar-nav'>
+                        <li class='active'><a href='#scroll-first'>Srategy 1</a></li>
+                        <li><a href='#scroll-second'>Strategy 2</a></li>
+                        <li><a href='#scroll-third'>Strategy 3</a></li>
+                    </ul>
+                </div>
+                <!-- CONTENT -->
+                <div dta-target='#navbar-spy' data-spy='scroll' style='height:530px; overflow-y:scroll; position:relative;'>
+                    <div id='scroll-first'>
+                        <h2>PARABOLIC SAR + EXPONENCIAL MOVING AVERAGES</h2>
+                        {{ code1 | safe }}
+                            <div class="jumbotron">
+                                <h3>INSTRUCTIONS</h3>
+                                <p>
+                                    <strong>OPEN LONG:</strong><br>
+                                    <ul>
+                                        <li>ADX and/or ADXR above 25 and growing</li>
+                                        <li>PSAR under the candlestick</li>
+                                        <li>EMA(20) > EMA(40)</li>
+                                    </ul>
+                                </p>
+                                <p>
+                                    <strong>CLOSE POSITION:</strong><br>
+                                    <ul>
+                                        <li>EMA(20) < EMA(40)</li>
+                                    </ul>
+                                </p>
+                        </div>
+                    </div>
+                    <div id='scroll-second'>
+                        <h2>RELATIVE STRANGTH INDEX + EXPONENCIAL MOVING AVERAGES</h2>
+                        {{ code2 | safe }}
+                        <div class="jumbotron">
+                            <h3>INSTRUCTIONS</h3>
+                            <p>
+                                <strong>OPEN LONG:</strong><br>
+                                <ul>
+                                    <li>ADX and/or ADXR above 25 and growing</li>
+                                    <li>RSI > 50</li>
+                                    <li>EMA(5) > EMA(12)</li>
+                                </ul>
+                            </p>
+                            <p>
+                                <strong>CLOSE POSITION:</strong><br>
+                                <ul>
+                                    <li>EMA(5) < EMA(12)</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                    <div id='scroll-third'>
+                        <h2>MACD + DIRECTIONAL MOVEMENT INDEX + PARABOLIC SAR</h2>
+                        {{ code3 | safe }}
+                        <div class="jumbotron">
+                            <h3 color="red">INSTRUCTIONS</h3>
+                            <p>
+                                <strong>OPEN LONG:</strong><br>
+                                <ul>
+                                    <li>ADX and/or ADXR above 25 and growing</li>
+                                    <li>MACD crossing the SIGNAL from below</li>
+                                    <li>DI+ > DI-</li>
+                                </ul>
+                            </p>
+                            <p>
+                                <strong>CLOSE POSITION when any combination of two of these:</strong><br>
+                                <ul>
+                                    <li>PSAR above candlestck</li>
+                                    <li>MACD cosses SIGNAL from above</li>
+                                    <li>DI+ < DI-</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

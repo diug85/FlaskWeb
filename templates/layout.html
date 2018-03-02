@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!--
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+-->
+
+<html lang="en">
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/spacelab/bootstrap.min.css" rel="stylesheet" integrity="sha384-L/tgI3wSsbb3f/nW9V6Yqlaw3Gj7mpE56LWrhew/c8MIhAYWZ/FNirA64AVkB5pI" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <title>DIUG Finance</title>
+    </head>
+    <body>
+        <nav class='navbar navbar-inverse navbar-fixed-top' role='navigation'>
+            <div class='container-fluid'>
+                <div class='navbar-header'>
+                    <a href="{{ url_for('index') }}" class='navbar-brand'>DIUG Finance</a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hamburger-navigation">
+                        <span class="sr-only">Navigation toggle</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <!-- Content -->
+                <div class='navbar-collapse' id='hamburger-navigation'>
+                    {% if session.user_id %}
+                        <ul class='nav navbar-nav' role='menu'>
+                            <li><a href="{{ url_for('quote') }}">Quote</a></li>
+                            <li><a href="{{ url_for('buy') }}">Buy</a></li>
+                            <li><a href="{{ url_for('sell') }}">Sell</a></li>
+                            <li><a href="{{ url_for('history') }}">History</a></li>
+                            <li><a href="{{ url_for('technical') }}"><span class="glyphicon glyphicon-education"></span><strong> Technical Indicators</strong></a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                        </ul>
+                    {% else %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{{ url_for('register') }}">Register</a></li>
+                            <li><a href="{{ url_for('login') }}">Log In</a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+
+            </div>
+        </nav>
+
+        {% block main %}{% endblock %}
+
+        <style>
+            body {
+                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            }
+        </style>
+    </body>
+</html>

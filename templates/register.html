@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('register') }}" method="post" class="form-horizontal">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-user"></span>
+                    <input autocomplete="off" autofocus class="form-control" name="user" placeholder="Username" type="text"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-lock"></span>
+                    <input class="form-control" name="password" placeholder="Enter password" type="password"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon glyphicon glyphicon-lock"></span>
+                    <input class="form-control" name="password2" placeholder="Re enter password" type="password"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Register</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

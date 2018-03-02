@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <div class="col-sm-10 col-sm-offset-1">
+        <h1>Sell</h1>
+        <br/>
+        <form action="{{url_for('sell')}}" method="post">
+            <table class="table-striped" align="center">
+                <col width="100">
+                <col width="300">
+                <col width="100">
+                <col width="100">
+                <col width="100">
+                <col width="50">
+                <thead>
+                    <tr>
+                        <th>SYMBOL</th>
+                        <th>NAME</th>
+                        <th>BOOK PRICE</th>
+                        <th>MKT PRICE</th>
+                        <th>SHARES</th>
+                        <th>SELL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock in portfolio %}
+                        <tr>
+                            <td>{{ stock["symbol"] }}</td>
+                            <td>{{ stock["name"] }}</td>
+                            <td>{{ stock["bp"] }}</td>
+                            <td>{{ stock["mp"] }}</td>
+                            <td>{{ stock["shares"] }}</td>
+                            <td> <input type="text" name="{{ stock['symbol'] }}" value="0"> </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div>
+                <button class="button" type="submit">Sell</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
